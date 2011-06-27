@@ -71,7 +71,7 @@ def transfer(request):
 
 class homeForm(ModelForm):
 	class meta:
-		exclude =['dob','phone','email','address','creadted','amount']
+		exclude =['dob','phone','email','address','created','amount']
 
 def homepage(request):
 	home = homeForm.object.all()
