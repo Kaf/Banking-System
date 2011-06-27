@@ -1,4 +1,6 @@
 # Create your views here.
+from django.forms import ModelForm
+from django.views.decorators.csrf import csrf_exempt
 from django.template import Context, loader
 from django.http import HttpResponse
 from models import Person
@@ -6,7 +8,7 @@ from models import Person
 class PersonForm(ModelForm):
 	class meta:
 	model = Person
-
+@csrf_exempt
 def create_account(request):
 	account = bank.object.all()
 #start form code
