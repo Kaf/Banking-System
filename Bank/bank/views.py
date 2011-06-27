@@ -35,8 +35,8 @@ def transfer(request):
 	transfer = transferForm.objects.all()
 	for Person.accnum == transfer.From:
 		Person.amount= Person.amount -transfer.amount
-		for Person.accnum == transfer.To:
-			Person.amount = Person.amount + transer.amount
+	for Person.accnum == transfer.To:
+		Person.amount = Person.amount + transer.amount
 	print 'Transfer Successful'
 	t = loader.get_template('bank/transfer.html')
 	c = Context({'transfer':transfer})
