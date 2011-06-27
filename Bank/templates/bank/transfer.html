@@ -1,0 +1,14 @@
+{% extends "bank/base.html" %}
+{% block content %}
+<a href= "/bank/transfer"></a>
+{% for transfer in create_account %}
+    <li>From: {{ transfer.From }}</li>
+    <li>To: {{ transfer.To}}</li>
+    <li>Amount: {{ transfer.Amount }}</li>
+{% endfor %}
+<div>Transfer Form:</div>
+    <form method='post' action="">
+        {{ form }}
+        <input type='submit' name='SUBMIT'>
+</form>
+{% endblock %}
