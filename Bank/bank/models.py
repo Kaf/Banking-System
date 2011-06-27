@@ -16,7 +16,7 @@ class Person(models.Model):
 
 class PersonAdmin(admin.ModelAdmin):
 	list_display=('name','email','amount')
-	search_fields =('accum')
+	search_fields =('accum',)
 	
 	
 admin.site.register(Person,PersonAdmin)
