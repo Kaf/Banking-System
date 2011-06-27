@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     #url(r'^$', 'Bank.views.home', name='home'),
     # url(r'^Bank/', include('Bank.foo.urls')),
 
-    url(r'^bank/',include('Banking-System.Bank.urls')),
+    url(r'^bank/',include('bank.urls')),
     url(r'^reg/', include('Bank.reg.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
