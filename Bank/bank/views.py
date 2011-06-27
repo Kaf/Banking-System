@@ -1,5 +1,6 @@
 # Create your views here.
 from django.forms import ModelForm
+from django import forms
 from django.views.decorators.csrf import csrf_exempt
 from django.template import Context, loader
 from django.http import HttpResponse
@@ -7,11 +8,11 @@ from models import Person
 
 class PersonForm(ModelForm):
 	class meta:
-	model = Person
+		model = Person
 @csrf_exempt
 def create_account(request):
 	account = bank.object.all()
-#start form code
+	#start form code
 	if request.method == 'POST':
 		form =PersonForm(request.Post)
 		if form.is_valid():
@@ -24,33 +25,55 @@ def create_account(request):
     		return HttpResponse(t.render(c))
 
 
+def viewMoney(request, id):
+	p = Person.objects.get(id=id)
+	t = loader.get_template('bank/view.html')
+	# print p.amount
+	c = Context({'p':p})
+	return HttpResponse(t.render(c))
+'''
+def secretDeposit(request):
+	if ispost....
+		add moneey to person
+		return HttpResponse - just deposititedd!
+	make a form with only money a single money field
+	show the form
+'''
 # Create your views here.
 
-class transferForm(forms.Form):
-	From = forms.PositiveIntegerField()
-	To = forms.PositiveIntegerField()
-	Amount = forms.FloatField()
+class TransferForm(forms.Form):
+	fromp = forms.IntegerField()
+	top = forms.IntegerField()
+	amount = forms.FloatField()
 	def __unicode__(self):
 		return self.From
-
+@csrf_exempt
 def transfer(request):
-	transfer = transferForm.objects.all()
+	'''transfer = transferForm.objects.all()
 	for Person.accnum == transfer.From:
 		Person.amount= Person.amount -transfer.amount
 	for Person.accnum == transfer.To:
-		Person.amount = Person.amount + transer.amount
-	print 'Transfer Successful'
+		Person.amount = Person.amount + transer.amount'''
+	if request.method == 'POST':
+		fromp = Person.objects.get(accnum=request.POST['fromp'])
+		top = Person.objects.get(accnum=request.POST['top'])		
+		fromp.amount -= request.POST['amount']
+		fromp.save()
+		top.amount += request.POST['amount']
+		top.save()
+		return HttpResponse('Done transfer')
+	form = TransferForm()
 	t = loader.get_template('bank/transfer.html')
-	c = Context({'transfer':transfer})
+	c = Context({'form':form})
 	return HttpResponse(t.render(c))
 
 
 
-class homeForm(ModelForm)
+class homeForm(ModelForm):
 	class meta:
-	exclude =['dob','phone','email','address','creadted','amount']
+		exclude =['dob','phone','email','address','creadted','amount']
 
-def homepage(request);
+def homepage(request):
 	home = homeForm.object.all()
 	if request.method == 'POST':
 		form =homeForm(request.Post)
