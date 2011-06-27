@@ -8,7 +8,9 @@ urlpatterns = patterns('',
     # Examples:
     #url(r'^$', 'Bank.views.home', name='home'),
     # url(r'^Bank/', include('Bank.foo.urls')),
-    url(r'^bank/',include('Bank.bank.urls')),
+
+    url(r'^bank/',include('Banking-System.Bank.urls')),
+    url(r'^reg/', include('Bank.reg.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
