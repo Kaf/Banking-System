@@ -13,4 +13,11 @@ class Person(models.Model):
 	amount= models.FloatField() 
 	def __unicode__():
 		return self.name
+
+class PersonAdmin(admin.ModelAdmin):
+	list_display=('name','email','amount')
+	search_fields =('accum')
 	
+	
+admin.site.register(Person,PersonAdmin)
+
