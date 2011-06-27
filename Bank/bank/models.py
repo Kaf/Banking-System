@@ -11,7 +11,7 @@ class Person(models.Model):
 	accnum= models.PositiveIntegerField()
 	created= models.DateTimeField(auto_now_add=True)
 	amount= models.FloatField() 
-	def __unicode__():
+	def __unicode__(self):
 		return self.name
 
 class PersonAdmin(admin.ModelAdmin):
