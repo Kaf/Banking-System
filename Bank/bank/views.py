@@ -41,3 +41,19 @@ def transfer(request):
 	t = loader.get_template('bank/transfer.html')
 	c = Context({'transfer':transfer})
 	return HttpResponse(t.render(c))
+
+
+
+class homeForm(ModelForm)
+	class meta:
+	exclude =['dob','phone','email','address','creadted','amount']
+
+def homepage(request);
+	home = homeForm.object.all()
+	if request.method == 'POST':
+		form =homeForm(request.Post)
+		if form.is_valid():
+			return HttpResponseRedirect('home/report.html')
+	
+
+
