@@ -7,10 +7,10 @@ class Person(models.Model):
 	dob= models.DateField()
 	phone= models.PositiveIntegerField()
 	address= models.TextField()
-	email= models.EmailField(required=True)
+	email= models.EmailField()
 	accnum= models.PositiveIntegerField()
 	created= models.DateTimeField(auto_now_add=True)
 	amount= models.FloatField() 
 	def __unicode__():
 		return self.name
-	
+
