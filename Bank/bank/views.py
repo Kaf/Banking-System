@@ -27,9 +27,10 @@ def create_account(request):
 
 def viewMoney(request, id):
 	p = Person.objects.get(id=id)
+	print p
 	t = loader.get_template('bank/view.html')
 	# print p.amount
-	c = Context({'p':p})
+	c = Context({'person':p})
 	return HttpResponse(t.render(c))
 '''
 def secretDeposit(request):
@@ -55,11 +56,11 @@ def transfer(request):
 	for Person.accnum == transfer.To:
 		Person.amount = Person.amount + transer.amount'''
 	if request.method == 'POST':
-		fromp = Person.objects.get(accnum=request.POST['fromp'])
-		top = Person.objects.get(accnum=request.POST['top'])		
-		fromp.amount -= request.POST['amount']
+		fromp = Person.objects.get(accnum=int(request.POST['fromp']))
+		top = Person.objects.get(accnum=int(request.POST['top']))		
+		fromp.amount -= int(request.POST['amount'])
 		fromp.save()
-		top.amount += request.POST['amount']
+		top.amount += int(request.POST['amount'])
 		top.save()
 		return HttpResponse('Done transfer')
 	form = TransferForm()
